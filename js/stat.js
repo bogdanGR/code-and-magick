@@ -1,5 +1,5 @@
 'use strict';
-  // Отрисовка канваса
+
 var drawCloud = function (ctx, x, y, width, heigth) {
   var offset = 10;
   ctx.beginPath();
@@ -15,6 +15,13 @@ var drawCloud = function (ctx, x, y, width, heigth) {
   ctx.stroke();
   ctx.closePath();
   ctx.fill();
+};
+
+var printText = function (ctx, data, histoX, columnIndent, i, height) {
+  ctx.fillText(data, histoX + columnIndent * i, height);
+};
+var drawHisto = function (ctx, histoX, columnIndent, i, height) {
+  ctx.fillRect(histoX + columnIndent * i, 245 - height, 40, height);
 };
 
 window.renderStatistics = function (ctx, names, times) {
@@ -54,9 +61,9 @@ window.renderStatistics = function (ctx, names, times) {
     } else {
       ctx.fillStyle = ['rgb(0, 0,', ((Math.random() * 5) * 50).toFixed(0), ')'].join('');
     }
-    ctx.fillRect(histoX + columnIndent * i, 245 - height, 40, height);
+    drawHisto(ctx, histoX, columnIndent, i, height);
     ctx.fillStyle = '#000';
-    ctx.fillText(time.toFixed(0), histoX + columnIndent * i, 240 - height);
-    ctx.fillText(name, histoX + columnIndent * i, 260);
+    printText(ctx, time.toFixed(0), histoX, columnIndent, i, 240 - height);
+    printText(ctx, name, histoX, columnIndent, i, 260);
   }
 };

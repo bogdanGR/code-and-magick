@@ -28,10 +28,10 @@ window.renderStatistics = function (ctx, names, times) {
   };
 
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
-  drawCloud(ctx, 110, 20, 420, 270);
+  drawCloud(110, 20, 420, 270);
 
   ctx.fillStyle = 'rgba(256, 256, 256, 1.0)';
-  drawCloud(ctx, 100, 10, 420, 270);
+  drawCloud(100, 10, 420, 270);
 
   ctx.fillStyle = '#000';
   ctx.font = '16px PT Mono';

@@ -1,12 +1,13 @@
 'use strict';
 
 var nameField = document.querySelector('.setup-user-name');
-nameField.required = true;
-nameField.maxLength = 50;
-
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
+var wizard = document.querySelector('#wizard');
+var wizardCoat = wizard.querySelector('#wizard-coat');
+var wizardEyes = wizard.querySelector('#wizard-eyes');
+var fireBall = document.querySelector('.setup-fireball-wrap');
 
 var openModal = function () {
   setup.classList.remove('invisible');
@@ -14,11 +15,6 @@ var openModal = function () {
 var closeModal = function () {
   setup.classList.add('invisible');
 };
-setupOpen.addEventListener('click', openModal);
-setupClose.addEventListener('click', closeModal);
-
-var wizard = document.querySelector('#wizard');
-var wizardCoat = wizard.querySelector('#wizard-coat');
 
 var changeColorWizardCoat = function () {
 
@@ -34,10 +30,6 @@ var changeColorWizardCoat = function () {
 
   wizardCoat.style.fill = wizardCoatColors[randomCoatColor];
 };
-wizardCoat.addEventListener('click', changeColorWizardCoat);
-
-var wizardEyes = wizard.querySelector('#wizard-eyes');
-
 var changeColorWizardEyes = function () {
   var wizardEyesColors = [
     'black',
@@ -49,9 +41,6 @@ var changeColorWizardEyes = function () {
   var randomEyesColor = Math.floor(Math.random() * wizardEyesColors.length);
   wizardEyes.style.fill = wizardEyesColors[randomEyesColor];
 };
-wizardEyes.addEventListener('click', changeColorWizardEyes);
-
-var fireBall = document.querySelector('.setup-fireball-wrap');
 
 var changeColorFireBall = function () {
   var fireBallColors = [
@@ -65,4 +54,12 @@ var changeColorFireBall = function () {
   fireBall.style.background = fireBallColors[randomFireBallColor];
 };
 
+
+setupOpen.addEventListener('click', openModal);
+setupClose.addEventListener('click', closeModal);
+wizardCoat.addEventListener('click', changeColorWizardCoat);
+wizardEyes.addEventListener('click', changeColorWizardEyes);
 fireBall.addEventListener('click', changeColorFireBall);
+
+nameField.required = true;
+nameField.maxLength = 50;

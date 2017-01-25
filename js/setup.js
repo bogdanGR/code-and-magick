@@ -1,4 +1,9 @@
 'use strict';
+
+var nameField = document.querySelector('.setup-user-name');
+nameField.required = true;
+nameField.maxLength = 50;
+
 var setup = document.querySelector('.setup');
 var setupOpen = document.querySelector('.setup-open');
 var setupClose = setup.querySelector('.setup-close');
@@ -29,7 +34,7 @@ var changeColorWizardCoat = function () {
 
   wizardCoat.style.fill = wizardCoatColors[randomCoatColor];
 };
-wizard.addEventListener('click', changeColorWizardCoat);
+wizardCoat.addEventListener('click', changeColorWizardCoat);
 
 var wizardEyes = wizard.querySelector('#wizard-eyes');
 

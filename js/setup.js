@@ -9,13 +9,52 @@ var wizardCoat = wizard.querySelector('#wizard-coat');
 var wizardEyes = wizard.querySelector('#wizard-eyes');
 var fireBall = document.querySelector('.setup-fireball-wrap');
 
-var openModal = function () {
-  setup.classList.remove('invisible');
-};
-var closeModal = function () {
-  setup.classList.add('invisible');
-};
 
+var ESCAPE_KEY_CODE = 27;
+var ENTER_KEY_CODE = 13;
+var changeAria = function (element) {
+
+  var pressed = (element.getAttribute('aria-pressed') === 'true');
+  if (!pressed) {
+    element.setAttribute('aria-pressed', !pressed);
+  }
+};
+var isActivateEvent = function (evt) {
+  return evt.keyCode && evt.keyCode === ENTER_KEY_CODE;
+};
+var setupKeydownHandler = function (evt) {
+  if (evt.keyCode === ESCAPE_KEY_CODE) {
+    setup.classList.add('invisible');
+  }
+};
+var showSetupElement = function () {
+  setup.classList.remove('invisible');
+  document.addEventListener('keydown', setupKeydownHandler);
+};
+var hideSetupElement = function () {
+  setup.classList.add('invisible');
+  document.removeEventListener('keydown', setupKeydownHandler);
+};
+setupOpen.addEventListener('click', function () {
+  showSetupElement();
+  changeAria(setupOpen);
+});
+setupOpen.addEventListener('keydown', function (evt) {
+  if (isActivateEvent(evt)) {
+    showSetupElement();
+    changeAria(setupOpen);
+  }
+});
+setupClose.addEventListener('click', function () {
+  hideSetupElement();
+  changeAria(setupClose);
+});
+setupClose.addEventListener('keydown', function (evt) {
+  if (isActivateEvent(evt)) {
+    hideSetupElement();
+    changeAria(setupClose);
+  }
+});
 var changeColorWizardCoat = function () {
 
   var wizardCoatColors = [
@@ -54,9 +93,6 @@ var changeColorFireBall = function () {
   fireBall.style.background = fireBallColors[randomFireBallColor];
 };
 
-
-setupOpen.addEventListener('click', openModal);
-setupClose.addEventListener('click', closeModal);
 wizardCoat.addEventListener('click', changeColorWizardCoat);
 wizardEyes.addEventListener('click', changeColorWizardEyes);
 fireBall.addEventListener('click', changeColorFireBall);

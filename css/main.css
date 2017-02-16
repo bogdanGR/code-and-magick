@@ -672,7 +672,7 @@ input[type=radio]:checked + .review-mark-label {
 
 .setup-submit {
   position: absolute;
-  left: 50%;
+  left: 13%;
   bottom: 30px;
 
   transform: translateX(-50%);
@@ -730,4 +730,14 @@ input[type=radio]:checked + .review-mark-label {
   font-weight: bold;
   font-size: 14px;
   color: #ffffff;
+}
+.setup-similar {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+
+  width: 590px;
+  height: 110px;
+
+  transform: translate(160px, 400px);
 }
